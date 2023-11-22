@@ -13,13 +13,13 @@
       "hash": "76f76584a113b240a4ec11f324b17302bde9a53a"
     },
     "com.readyplayerme.core": {
-      "version": "https://github.com/readyplayerme/rpm-unity-sdk-core.git#v3.4.0",
+      "version": "https://github.com/readyplayerme/rpm-unity-sdk-core.git#v4.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
-      "hash": "92c84cdbbe9179c2916734635610ed13be68b5e6"
+      "hash": "d0d0d02bab6a68b0d096fffcb7f8c19b241298d3"
     },
     "com.readyplayerme.webview": {
       "version": "https://github.com/readyplayerme/rpm-unity-sdk-webview.git#v2.0.0",

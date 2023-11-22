@@ -46,16 +46,20 @@ public class Chat : MonoBehaviour
 
     void Update()
     {
+        //네트워크 존재 여부 및 연결 상태 확인
         if (network != null && network.IsConnect())
         {
             byte[] bytes = new byte[1024];
+            //네트워크로부터 데이터를 수신한다
             int length = network.Receive(ref bytes, bytes.Length);
-            if (length > 0)
+            if (length > 0) //수신된 데이터가 있다면
             {
+                //해당 데이터를 문자열로 변환한다
                 string str = System.Text.Encoding.UTF8.GetString(bytes);
                 
-		        // 채팅 데이터 받았을 때
+		        //수신된 데이터를 대화목록에 추가한다
                 AddTalk(str);
+                //애니메이션을 갱신한다
                 SetAnimation(false);
             }
 
