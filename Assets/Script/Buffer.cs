@@ -1,26 +1,30 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+//데이터를 읽고 쓰기 위한 버퍼 클래스
+//메모리 스트림을 사용하여 데이터를 저장하고
+//데이터가 쓰여지고 읽혀질 때마다 패킷 정보를 추적
 public class Buffer
 {
+    //버퍼에 저장된 데이터의 위치와 크기 추적
     struct Packet
     {
-        public int pos;
-        public int size;
+        public int pos; //데이터의 시작 위치
+        public int size; //데이터의 크기
     };
 
-    MemoryStream stream;
-    List<Packet> list;
+    MemoryStream stream; //실제 데이터 저장
+    List<Packet> list; 
     int pos = 0;
 
     Object o = new Object();
 
     public Buffer()
     {
-        stream = new MemoryStream();
-        list = new List<Packet>();
+        stream = new MemoryStream(); //새로운 메모리 스트림 생성
+        list = new List<Packet>(); //데이터 패킷을 추적하는 리스트
     }
 
     public int Write(byte[] bytes, int length)
@@ -49,7 +53,8 @@ public class Buffer
             return -1;
 
         int ret = 0;
-        lock (o)
+        //여러 스레드가 동시에 메서도 호출하는 경우를 대비하여 lock
+        lock (o) 
         {
             Packet packet = list[0];
 
